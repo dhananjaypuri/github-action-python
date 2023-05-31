@@ -12,6 +12,7 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     env:
+      DOCKER_UNAME: dhananjaypuri
       DOCKER_REPO: dhananjaypuri
       IMAGE_NAME: gitaction-flask
       TAG: latest
@@ -21,9 +22,11 @@ jobs:
       - name: Image Build
         run: |
           docker build -t "${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:latest" .
-          docker images
+          
       - name: Image Push
-        run: echo "Image pushed successfully !!!!!!"
+        run: |
+          docker images
+          echo ${{ secrets.DOCKER_PASSWD }} | docker login -u ${{ env.DOCKER_UNAME }} --password-stdin
   # deploy_to_server:
   #   runs-on: ubuntu-latest
   #   steps:
