@@ -55,8 +55,8 @@ jobs:
               if [[ $? -eq 0 ]]
               then
                 echo "Container Deleted Successfully !!!!!"
-                docker pull dhananjaypuri/gitpython:latest
-                docker container run -d --name gitflask -p 5000:5000 dhananjaypuri/gitpython
+                docker pull dhananjaypuri/gitaction-flask:latest
+                docker container run -d --name gitflask -p 5000:5000 dhananjaypuri/gitaction-flask:latest
                 if [[ $? -eq 0 ]]
                 then
                   echo "Container Started Successfully !!!!!"
@@ -68,8 +68,8 @@ jobs:
               fi 
             else
               echo "Starting container as it was not running !!!!!!!!"
-              docker pull dhananjaypuri/gitpython:latest
-              docker container run -d --name gitflask -p 5000:5000 dhananjaypuri/gitpython
+              docker pull dhananjaypuri/gitaction-flask:latest
+              docker container run -d --name gitflask -p 5000:5000 dhananjaypuri/gitaction-flask:latest
               if [[ $? -eq 0 ]]
               then
                 echo "Container Started Successfully !!!!!"
