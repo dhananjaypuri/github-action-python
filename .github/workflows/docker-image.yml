@@ -27,6 +27,7 @@ jobs:
         run: |
           docker images
           echo ${{ secrets.DOCKER_PASSWD }} | docker login -u ${{ env.DOCKER_UNAME }} --password-stdin
+          docker image push "${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:latest"
   # deploy_to_server:
   #   runs-on: ubuntu-latest
   #   steps:
