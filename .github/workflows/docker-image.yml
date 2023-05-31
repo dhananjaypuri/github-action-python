@@ -21,6 +21,7 @@ jobs:
       - name: Image Build
         run: |
           docker build -t "${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:latest" .
+          docker images
       - name: Image Push
         run: echo "Image pushed successfully !!!!!!"
   # deploy_to_server:
