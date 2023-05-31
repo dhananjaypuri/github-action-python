@@ -44,4 +44,4 @@ jobs:
           username: ${{ env.HOST_USER }}
           port: 22
           script: |
-            sudo docker container ls
+            sudo docker ps --format "{{.ID}} {{.Names}}"
