@@ -1,18 +1,29 @@
-name: Docker Image CI
+name: Flask web project
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
+  pull-request:
+    branches:
+      - master
 
 jobs:
-
-  build:
-
+  build: 
     runs-on: ubuntu-latest
-
+    env:
+      DOCKER_REPO: dhananjaypuri
+      IMAGE_NAME: gitaction-flask
+      TAG: latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Code Checkout
+        uses: actions/checkout@v2
+      - name: Image Build
+        run: |
+          echo "${{ github.GITHUB_RUN_ID }}"
+          echo ${{ env.DOCKER_REPO }}
+      - name: Image Push
+  # deploy_to_server:
+  #   runs-on: ubuntu-latest
+  #   steps:
+
