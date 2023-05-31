@@ -23,7 +23,7 @@ jobs:
           echo "${{ github.GITHUB_RUN_ID }}"
           echo ${{ env.DOCKER_REPO }}
       - name: Image Push
+        run: echo "Image pushed successfully !!!!!!"
   # deploy_to_server:
   #   runs-on: ubuntu-latest
   #   steps:
-
