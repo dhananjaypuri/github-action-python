@@ -32,6 +32,15 @@ jobs:
   CD:
     runs-on: ubuntu-latest
     needs: CI
+    env:
+      HOST_IP: 44.204.45.157
+      HOST_USER: ubuntu
     steps:
       - name: Deploy to server
-        run: echo "Image deployed successfully!!!!"
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ env.HOST_IP }}
+          password: ${{ secrets.SRV_PASSWD }}
+          username: ${{ env.HOST_USER }}
+          port: 22
+          script: whoami
