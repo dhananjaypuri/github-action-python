@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build: 
+  CI: 
     runs-on: ubuntu-latest
     env:
       DOCKER_UNAME: dhananjaypuri
@@ -28,6 +28,10 @@ jobs:
           docker images
           echo ${{ secrets.DOCKER_PASSWD }} | docker login -u ${{ env.DOCKER_UNAME }} --password-stdin
           docker image push "${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:latest"
-  # deploy_to_server:
-  #   runs-on: ubuntu-latest
-  #   steps:
+          
+  CD:
+    runs-on: ubuntu-latest
+    needs: CI
+    steps:
+      - name: Deploy to server
+        run: echo "Image deployed successfully!!!!"
