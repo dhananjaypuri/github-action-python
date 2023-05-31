@@ -51,4 +51,11 @@ jobs:
               echo "Container ID : ${container_id} to be deleted"
             else
               echo "Container already running"
+              docker pull dhananjaypuri/gitpython:latest
+              docker container run -d --name gitflask -p 5000:5000 dhananjaypuri/gitpython
+              if [[ $? -eq 0 ]]
+              then
+                echo "Container Started Successfully !!!!!"
+              else
+                echo "Container cannot be started"
             fi
