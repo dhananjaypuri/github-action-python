@@ -49,4 +49,6 @@ jobs:
               container_id=$(docker ps --format "{{.ID}} {{.Names}}" | grep gitflask$ | awk '{print $1}')
               container_name=$(docker ps --format "{{.ID}} {{.Names}}" | grep gitflask$ | awk '{print $2}')
               echo "Container ID : ${container_id} to be deleted"
+            else
+              echo "Container already running"
             fi
