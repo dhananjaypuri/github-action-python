@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Image Build
         run: |
-          docker build -t ${{ env.DOCKER_REPO }}:${{ env.IMAGE_NAME }}:latest .
+          docker build -t "${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:latest" .
       - name: Image Push
         run: echo "Image pushed successfully !!!!!!"
   # deploy_to_server:
